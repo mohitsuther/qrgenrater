@@ -1,1 +1,1 @@
-# qrgenrater
+# qrgenerate
