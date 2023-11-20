@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qrgenratar</title>
+    <style>
+        *{
+            background:linear-gradient(120deg,rgb(197, 255, 197),rgb(255, 149, 255));
+        }
+
+        .container {
+            height: 300px;
+            width: 300px;
+            border-radius: 10px;
+            padding: 20px;
+            place-items: center;
+            display: flex;
+            margin-inline: auto;
+            margin-top: 12rem;
+            flex-direction: column;
+            background:linear-gradient( 120deg ,rgb(3, 82, 255), rgb(55, 255, 129));
+        }
+
+        #qrinput {
+            height: 30px;
+            width: 80%;
+            margin-top: 3rem;
+        }
+        #qrimage{
+            margin: 4px;
+        }
+
+
+        #qrbutton {
+            width: 80%;
+            border-radius: 10px;
+            border: none;
+            height: 30px;
+        }
+        .error{
+            animation-name: k;
+            animation-duration: 0.4s;
+            animation-timing-function: ease-in-out;
+            animation-delay: 0.1;
+            animation-iteration-count: 2;
+        }
+        @keyframes k {
+            0%{
+
+            }
+            10%{
+                transform: translateX(3px);
+            }
+            20%{
+                transform: translateX(-3px);
+
+            }
+            30%{
+                transform: translateX(3px);
+
+            }
+            40%{
+                transform: translateX(-3px);
+            }
+            50%{
+                transform: translateX(3px);
+            }
+            60%{
+                transform: translateX(-3px);
+            }
+            70%{
+                transform: translateX(3px);
+            }
+            80%{
+                transform: translateX(-3px);
+            }
+            90%{
+                transform: translateX(3px);
+            }
+            100%{
+                transform: translateX(-3px);
+
+            }
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input id="qrinput" type="text" placeholder="enter your detail">
+        <img id="qrimage" src="" >
+
+        <button id="qrbutton" onclick="getdata();">genrate QR</button>
+
+    </div>
+    <script>
+        let qrimg = document.getElementById("qrimage");
+        let qrinput = document.getElementById("qrinput");
+        let qrbutton = document.getElementById("qrbutton");
+
+        function getdata(){
+            if(qrinput.value.length>0){
+            qrimage.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + qrinput.value;
+            }
+            else{
+                qrinput.classList.add("error");
+                setTimeout(()=>{
+                    qrinput.classList.remove("error");
+                },1000)
+
+
+            }
+
+        }
+    </script>
+</body>
+
+</html>
